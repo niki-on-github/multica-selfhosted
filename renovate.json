@@ -1,0 +1,21 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "minimumReleaseAge": "1 day",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^upstream\\.env$"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n[A-Z_]+=(?<currentValue>\\S+)"
+      ]
+    }
+  ],
+  "packageRules": [
+    {
+      "matchDepNames": ["multica-ai/multica"],
+      "automerge": true,
+      "automergeType": "branch"
+    }
+  ]
+}
