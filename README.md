@@ -1,7 +1,8 @@
 # multica-selfhosted
 
 [Multica](https://github.com/multica-ai/multica) images with upstream's Google login turned into a generic
-OAuth2/OIDC login (used with Kanidm). `patch.sh` replaces three hardcoded Google URLs, nothing else.
+OAuth2/OIDC login (used with Kanidm). `patch.sh` replaces the three hardcoded Google URLs, the button label
+("Continue with SSO", all locales) and the Google logo (key icon), nothing else.
 
 - `ghcr.io/niki-on-github/multica-backend:<upstream tag>`
 - `ghcr.io/niki-on-github/multica-web:<upstream tag>`
@@ -23,4 +24,4 @@ Web: the login button opens `/kanidm/authorize?...`. Redirect that path (keep th
 authorization endpoint, Kanidm: `https://<idm>/ui/oauth2`.
 
 Provider client: redirect URL `https://<multica>/auth/callback`, scopes `openid email profile`, no PKCE (upstream's
-flow does not send it), client secret sent in the POST body. The button text still says "Google".
+flow does not send it), client secret sent in the POST body.
