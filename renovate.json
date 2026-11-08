@@ -5,7 +5,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^upstream\\.env$"],
+      "managerFilePatterns": ["/^upstream\\.env$/"],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n[A-Z_]+=(?<currentValue>\\S+)"
       ]
@@ -13,7 +13,14 @@
   ],
   "packageRules": [
     {
+      "description": "New upstream release -> commit to main -> build.yml builds the patched images",
       "matchDepNames": ["multica-ai/multica"],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "description": "Action bumps are tested by the build they trigger",
+      "matchManagers": ["github-actions"],
       "automerge": true,
       "automergeType": "branch"
     }
