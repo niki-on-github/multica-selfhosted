@@ -34,7 +34,7 @@ jobs:
             file: Dockerfile.web
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Resolve version
         id: version
@@ -44,7 +44,7 @@ jobs:
           echo "version=${v:-$MULTICA_VERSION}" >> "$GITHUB_OUTPUT"
 
       - name: Checkout upstream
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: multica-ai/multica
           ref: ${{ steps.version.outputs.version }}
